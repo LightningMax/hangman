@@ -1,13 +1,13 @@
 words = ['reality', 'fundamental']
-
-player_input = input("Guess a letter\n~> ")
-
 hangman_word = ''
 
-for i in words[0]:
-    if player_input == i:
-        hangman_word += player_input
-    else:
-        hangman_word += "_ "
+while hangman_word != words[0]:
+    player_input = input("Guess a letter\n~> ")
+    
+    for i in words[0]:
+        if player_input == i:
+            hangman_word += player_input
+        else:
+            hangman_word += "_ "
 
-print(hangman_word)
+    print(hangman_word)
