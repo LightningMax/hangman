@@ -15,9 +15,7 @@ word_to_convert = create_map(words)
 while True:
 
     print(word_to_convert)
-    player_input = input("Guess a letter\n~> ")
+    player_input = input("Guess a letter\n~> ").lower()
     for i, char in enumerate(words):
         if char == player_input:
             word_to_convert[i] = char
-
-#hangman_word = convert_to_list(words[0])
