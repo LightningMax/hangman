@@ -11,9 +11,10 @@ random_number = random.randint(0 , len(word_list))
 words = word_list[random_number]
 hangman_word = ''
 word_to_convert = create_map(words)
+player_lives = 6
 
-while True:
-
+while player_lives > 0:
+    
     print(word_to_convert)
     player_input = input("Guess a letter\n~> ").lower()
     for i, char in enumerate(words):
