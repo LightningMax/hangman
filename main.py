@@ -20,10 +20,9 @@ def convert_to_list(word):
 def convert_to_string(word):
     pass
 
-words = ['reality', 'fundamental']
+words = ['telephone', 'fundamental']
 hangman_word = ''
 word_to_convert = create_map(words[0])
-
 
 while True:
 
