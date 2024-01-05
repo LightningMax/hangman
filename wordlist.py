@@ -25,4 +25,3 @@ word_list = ['abruptly', 'absurd', 'abyss', 'affix', 'askew', 'avenue',
              'wizard', 'woozy', 'wristwatch', 'wyvern', 'xylophone', 'yachtsman', 'yippee', 'yoked', 'youthful', 
              'yummy', 'zephyr', 'zigzag', 'zigzagging', 'zilch', 'zipper', 'zodiac', 'zombie']
 
-print(word_list)
