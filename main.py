@@ -14,9 +14,15 @@ word_to_convert = create_map(words)
 player_lives = 6
 
 while player_lives > 0:
-    
-    print(word_to_convert)
+    print(f"lives: {player_lives}")
+    print(' '.join(word_to_convert))
     player_input = input("Guess a letter\n~> ").lower()
-    for i, char in enumerate(words):
-        if char == player_input:
-            word_to_convert[i] = char
+    if player_input not in words:
+        print("This letter is not in the word")
+        player_lives -= 1
+    elif player_input in word_to_convert:
+        print("You already typed this letter")
+    else:
+        for i, char in enumerate(words):
+            if char == player_input:
+                word_to_convert[i] = char
