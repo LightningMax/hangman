@@ -15,13 +15,19 @@ player_guess = mapping_underscore(word_to_guess)
 player_lives = 6
 hangman_stage = 0
 
-while player_lives > 0:
+while True:
+
     print(HANGMANPICS[hangman_stage])
     formated_player_guess = ''.join(player_guess)
+    
     if formated_player_guess == word_to_guess:
         print("You win!")
         break
     
+    if player_lives < 1:
+        print("You Lose!")
+        break
+
     print(' '.join(formated_player_guess))
     player_input = input("Guess a letter\n~> ").lower()
 
