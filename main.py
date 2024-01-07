@@ -1,6 +1,10 @@
 import random
+import os
 from word_list import *
 from ASCII_arts import *
+
+def clear_screen():
+    os.system('cls') or os.system('clear')
 
 def mapping_underscore(word):
     map = ''
@@ -8,18 +12,17 @@ def mapping_underscore(word):
         map += '_' 
     return list(map)
 
-
 random_number = random.randint(0 , len(word_list))
-word_to_guess = word_list[0]
+word_to_guess = word_list[-1]
 player_guess = mapping_underscore(word_to_guess)
 player_lives = 6
 hangman_stage = 0
 
 while True:
-
+    clear_screen()
     print(HANGMANPICS[hangman_stage])
     formated_player_guess = ''.join(player_guess)
-    
+
     if formated_player_guess == word_to_guess:
         print("You win!")
         break
