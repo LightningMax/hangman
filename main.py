@@ -1,10 +1,11 @@
-import random
 import os
+import random
+import time
 from word_list import *
 from ASCII_arts import *
 
 def clear_screen():
-    os.system('cls') or os.system('clear')
+    os.system('clear')
 
 def mapping_underscore(word):
     map = ''
@@ -13,7 +14,7 @@ def mapping_underscore(word):
     return list(map)
 
 random_number = random.randint(0 , len(word_list))
-word_to_guess = word_list[-1]
+word_to_guess = word_list[random_number]
 player_guess = mapping_underscore(word_to_guess)
 player_lives = 6
 hangman_stage = 0
@@ -34,13 +35,14 @@ while True:
     print(' '.join(formated_player_guess))
     player_input = input("Guess a letter\n~> ").lower()
 
+    if player_input in player_guess:
+        print("You already typed this letter")
+        time.sleep(2)
     if player_input not in word_to_guess:
         print("This letter is not in the word")
+        time.sleep(2)
         player_lives -= 1
         hangman_stage +=1
-    elif player_input in player_guess:
-        print("You already typed this letter")
-    else:
-        for i, char in enumerate(word_to_guess):
-            if char == player_input:
-                player_guess[i] = char
+    for i, char in enumerate(word_to_guess):
+        if char == player_input:
+            player_guess[i] = char
