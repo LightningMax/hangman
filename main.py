@@ -2,30 +2,36 @@ import random
 from word_list import *
 from ASCII_arts import *
 
-def create_map(word):
+def mapping_underscore(word):
     map = ''
     for i in word:
         map += '_' 
     return list(map)
 
+
 random_number = random.randint(0 , len(word_list))
-words = word_list[random_number]
-word_to_convert = create_map(words)
+word_to_guess = word_list[0]
+player_guess = mapping_underscore(word_to_guess)
 player_lives = 6
 hangman_stage = 0
 
 while player_lives > 0:
     print(HANGMANPICS[hangman_stage])
-    print(' '.join(word_to_convert))
+    formated_player_guess = ''.join(player_guess)
+    if formated_player_guess == word_to_guess:
+        print("You win!")
+        break
+    
+    print(' '.join(formated_player_guess))
     player_input = input("Guess a letter\n~> ").lower()
 
-    if player_input not in words:
+    if player_input not in word_to_guess:
         print("This letter is not in the word")
         player_lives -= 1
         hangman_stage +=1
-    elif player_input in word_to_convert:
+    elif player_input in player_guess:
         print("You already typed this letter")
     else:
-        for i, char in enumerate(words):
+        for i, char in enumerate(word_to_guess):
             if char == player_input:
-                word_to_convert[i] = char
+                player_guess[i] = char
