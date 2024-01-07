@@ -5,7 +5,7 @@ from word_list import *
 from ASCII_arts import *
 
 def clear_screen():
-    os.system('clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def mapping_underscore(word):
     map = ''
