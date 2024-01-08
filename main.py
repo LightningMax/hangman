@@ -18,31 +18,37 @@ word_to_guess = word_list[random_number]
 player_guess = mapping_underscore(word_to_guess)
 player_lives = 6
 hangman_stage = 0
+typed_words = []
 
 while True:
     clear_screen()
     print(HANGMANPICS[hangman_stage])
     formated_player_guess = ''.join(player_guess)
 
+    # Win Lose Conditions
     if formated_player_guess == word_to_guess:
-        print("You win!")
+        print("You Win!")
         break
     
     if player_lives < 1:
         print("You Lose!")
+        print(f"The word was {word_to_guess}")
         break
 
     print(' '.join(formated_player_guess))
     player_input = input("Guess a letter\n~> ").lower()
-
-    if player_input in player_guess:
+    
+    if player_input in typed_words:
         print("You already typed this letter")
         time.sleep(2)
-    if player_input not in word_to_guess:
-        print("This letter is not in the word")
+    elif player_input not in word_to_guess:
+        print("Wrong letter")
         time.sleep(2)
         player_lives -= 1
         hangman_stage +=1
+    
     for i, char in enumerate(word_to_guess):
         if char == player_input:
             player_guess[i] = char
+    
+    typed_words.append(player_input)
